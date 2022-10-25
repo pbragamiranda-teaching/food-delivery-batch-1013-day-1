@@ -21,7 +21,7 @@ class PatientRepository
   end
 
   def load_csv
-    CSV.foreach('patients.csv', headers: :first_row, header_converters: :symbol) do |row|
+    CSV.foreach(@csv_file, headers: :first_row, header_converters: :symbol) do |row|
       row[:id] = row[:id].to_i
       row[:cured] = row[:cured] == 'true'
       row[:room] = @room_repository.find(row[:room_id].to_i)

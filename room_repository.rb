@@ -13,7 +13,7 @@ class RoomRepositoy
   end
 
   def load_csv
-    CSV.foreach('rooms.csv', headers: :first_row, header_converters: :symbol) do |row|
+    CSV.foreach(@csv_file, headers: :first_row, header_converters: :symbol) do |row|
       row[:id] = row[:id].to_i
       row[:capacity] = row[:capacity].to_i
       @rooms << Room.new(row)
